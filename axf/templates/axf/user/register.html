@@ -1,0 +1,42 @@
+{% extends 'base_user.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ block.super }}
+    注册
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/user/js/user.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <form class="container" action="{% url 'axfuser:register' %}" method="post" enctype="multipart/form-data" onsubmit="return parse1();">
+        <div class="form-group">
+            <label for="exampleInputName">用户名</label>
+            <input name="name" type="text" class="form-control" id="exampleInputName" placeholder="用户名字3到6个字母">
+            <span id="nameinfo"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">邮箱</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword">密码</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="请输入密码">
+            <span id="passwordinfo"></span>
+        </div><div class="form-group">
+            <label for="exampleInputPassword1">确认密码</label>
+            <input name="passwordconfrim" type="password" class="form-control" id="exampleInputPassword1" placeholder="再次确认密码">
+            <span id="passwordinfo1"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">头像</label>
+            <input name="icon" type="file" id="exampleInputFile">
+        </div>
+        <button type="submit" class="btn btn-success btn-block"  >注册</button>
+    </form>
+{% endblock %}

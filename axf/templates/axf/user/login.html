@@ -1,0 +1,33 @@
+{% extends 'base_user.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ block.super }}
+    登陆
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/user/js/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <form class="container" action="{% url 'axfuser:login' %}" method="post" onsubmit="return parse();" >
+        <div class="form-group">
+            <label for="exampleInputName1">用户名</label>
+            <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="用户名字3到6个字母">
+            <span id="nameinfo1"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword2">密码</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword2" placeholder="请输入密码">
+            <span id="passwordinfo2"></span>
+        </div>
+        <img  src="/axfuser/get_code/" alt="" id="changeImg" onclick="changeImage();">
+        <input id="input1" style="margin-top: 10px" type="text" name="imgcode">
+        <p style="color: red">{{ msg }}</p>
+        <button style="margin-top: 10px" type="submit" class="btn btn-success btn-block" >登陆</button>
+    </form>
+{% endblock %}
